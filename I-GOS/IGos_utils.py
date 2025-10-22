@@ -168,6 +168,9 @@ def load_model_new(use_cuda = 1, model_name = 'resnet50'):
         model = models.resnet50(pretrained=True)
     elif model_name == 'vgg19':
         model = models.vgg19(pretrained=True)
+    elif model_name == 'resnet50':
+        checkpoint = torch.load('./checkpoint/ckpt.pth')
+
 
     #print(model)
     model.eval()

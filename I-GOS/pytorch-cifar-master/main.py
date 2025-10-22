@@ -69,6 +69,7 @@ net = ResNet18()
 # net = EfficientNetB0()
 # net = RegNetX_200MF()
 # net = SimpleDLA()
+
 net = net.to(device)
 if device == 'cuda':
     net = torch.nn.DataParallel(net)
