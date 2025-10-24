@@ -106,14 +106,13 @@ def tv_norm(input, tv_beta):
     return row_grad + col_grad
 
 
-def preprocess_image(
-        img: np.ndarray,
-        use_cuda: bool = True,
-        require_grad: bool = False) -> torch.Tensor:
+def preprocess_image(\
+                    img: np.ndarray,
+                    use_cuda: bool = True,
+                    require_grad: bool = False) -> torch.Tensor:
     """
-
-    what does this function do?
-    These means and stds are the standard ImageNet normalization values.
+    input: 
+    - img: BGR image 
     Most pretrained PyTorch models (like ResNet, VGG) expect input images
     normalize with these.
 
@@ -123,11 +122,15 @@ def preprocess_image(
     output:
     1. `preprocessed_img_tensor`: normalized
     """
-    means = [0.485, 0.456, 0.406]
-    stds = [0.229, 0.224, 0.225]
+    # means = [0.485, 0.456, 0.406]
+    # stds = [0.229, 0.224, 0.225]
+    means = [0.4915, 0.4823, 0.4468]
+    stds =  [0.2470, 2435, 0.2616]
 
 
-    preprocessed_img = img.copy()[:, :, ::-1]# (224,224,BGR) -> (224, 224, RGB)
+
+
+    preprocessed_img = img.copy()[:, :, ::-1]# (224,224,BGR) -> (224, 224, RGB) which is weird!
 
     for i in range(3):
         # But notice: this assumes img has pixel values already scaled to [0,1],
